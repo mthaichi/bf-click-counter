@@ -1,5 +1,5 @@
 <?php
-namespace BF_Ga4TagInstaller;
+namespace BF_ClickCounter;
 class Plugin extends \BF_PluginBase\Plugin {
 
     protected $version = '0.0.1';
@@ -13,14 +13,14 @@ class Plugin extends \BF_PluginBase\Plugin {
         $block_dir = $this->base_dir . '/build';
         
         $this->view = new \BF_PluginBase\View( $this );
-
         $this->input = new \BF_PluginBase\Input();
+
+        $this->counter_model = ClickCounterModel::get_instance();
+        $this->counter_model->activate_action();
   
         $this->option_page = new OptionPage($this);
         $this->option_page->initialize();
 
-        $this->ga4_tag_output = new Ga4TagOutput($this);
-        $this->ga4_tag_output->activate_action();
     }
 }
 

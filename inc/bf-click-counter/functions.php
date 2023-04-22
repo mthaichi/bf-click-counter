@@ -1,5 +1,5 @@
 <?php
-namespace BF_Ga4TagInstaller;
+namespace BF_ClickCounter;
 
 function get_option ( $key ) {
     $plugin = Plugin::get_instance();

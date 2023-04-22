@@ -1,5 +1,5 @@
 <?php
-namespace BF_Ga4TagInstaller;
+namespace BF_ClickCounter;
 class OptionPage extends \BF_PluginBase\OptionPage {
 
     protected $page_title = 'BF GA4 Tag Installer';
