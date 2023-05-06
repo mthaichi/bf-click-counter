@@ -15,7 +15,7 @@ const getRootDirectoryName = () => {
 // ルートディレクトリの bf-ga4-tag-installer.php を [ルートディレクトリ名].php に変更する。
 gulp.task('rename', function() {
   const rootDirectory = getRootDirectoryName();
-  return gulp.src('./bf-ga4-tag-installer.php')
+  return gulp.src('./bf-clock-counter.php')
     .pipe(rename(function(path) {
       path.basename = rootDirectory;
     }))
@@ -25,9 +25,9 @@ gulp.task('rename', function() {
 // inc/bf-ga4-tag-installer のディレクトリ名を [ルートディレクトリ名] に変更する。
 gulp.task('replace-dirname', function() {
   const rootDirectory = getRootDirectoryName();
-  return gulp.src('./inc/bf-ga4-tag-installer')
+  return gulp.src('./inc/bf-click-counter')
     .pipe(rename(function(path) {
-		path.dirname = path.dirname.replace('bf-ga4-tag-installer', rootDirectory);
+		path.dirname = path.dirname.replace('bf-click-counter', rootDirectory);
     }))
     .pipe(gulp.dest('./inc/'));
 });
@@ -77,6 +77,6 @@ gulp.task('dist', (done) => {
 		base: './'
 	  }
 	)
-	files.pipe(gulp.dest("dist/bf-ga4-tag-installer"));
+	files.pipe(gulp.dest("dist/bf-click-counter"));
 	done();
   });

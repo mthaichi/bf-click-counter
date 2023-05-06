@@ -1,5 +1,10 @@
 {
     "require": {
         "yahnis-elsts/plugin-update-checker": "^5.0"
+    },
+    "require-dev": {
+        "wp-phpunit/wp-phpunit": "^6.2",
+        "yoast/phpunit-polyfills": "^1.0",
+        "squizlabs/php_codesniffer": "^3.7"
     }
 }

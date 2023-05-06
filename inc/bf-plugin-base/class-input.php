@@ -2,46 +2,72 @@
 
 namespace BF_PluginBase;
 
-
+/**
+ * Input class
+ */
 class Input extends BaseObject {
 
 	/**
-	 * $_GETの内容をコピーして保持する
+	 * Copy and store the contents of $_GET.
 	 */
 	private $get;
-	
+
 	/**
-	 * $_POSTの内容をコピーして保持する
+	 * Copy and store the contents of $_POST.
 	 */
 	private $post;
 
 	/**
-	 * $_REQUESTの内容をコピーして保持する
+	 * Copy and store the contents of $_REQUEST.
 	 */
-	private $request;	
-	
+	private $request;
 
-	function __construct() {}
-	
-	function get($key = null) {
-		if ( ! is_null($key) && isset($_GET[$key])) {
-			return $_GET[$key];
-		}
-		return $_GET;
+	/**
+	 * Constructor
+	 */
+	function __construct() {
+		$this->get = $_GET;
+		$this->post = $_POST;
+		$this->request = $_REQUEST;
 	}
-	
-	function post($key = null) {
-		if ( ! is_null($key) && isset($_POST[$key])) {
-			return $_POST[$key];
+
+	/**
+	 * Get the value of a GET parameter.
+	 *
+	 * @param string $key
+	 * @return void
+	 */
+	function get( $key = null ) {
+		if ( ! is_null( $key ) && isset( $this->get[ $key ] ) ) {
+			return $this->get[ $key ];
 		}
-		return $_POST;
-	}	
-	
-	function request($key = null) {
-		if ( ! is_null($key)) {
-			return $this->request[$key];
+		return is_null( $key ) ? $this->get : false;
+	}
+
+	/**
+	 * Get the value of a POST parameter.
+	 *
+	 * @param string $key
+	 * @return void
+	 */
+	function post( $key = null ) {
+		if ( ! is_null( $key ) && isset( $this->post[ $key ] ) ) {
+			return $this->post[ $key ];
 		}
-		return $_REQUEST;
-	}	
+		return is_null( $key ) ? $this->post : false;
+	}
+
+	/**
+	 * Get the value of a REQUEST(GET&POST) parameter.
+	 *
+	 * @param string $key
+	 * @return void
+	 */
+	function request( $key = null ) {
+		if ( ! is_null( $key ) && isset( $this->request[ $key ] ) ) {
+			return $this->request[ $key ];
+		}
+		return is_null( $key ) ? $this->request : false;
+	}
 
 }

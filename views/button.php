@@ -1,0 +1,1 @@
+<a href="javascript:void(0);" class="<?php echo $classnames; ?>" data-id="<?php echo $id; ?>"><?php echo $button_label; ?>(<span class="count"><?php echo $count; ?></span>)</a>

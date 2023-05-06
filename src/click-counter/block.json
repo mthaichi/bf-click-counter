@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "bf-click-counter/click-counter",
+	"version": "0.1.0",
+	"title": "Click Counter",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Simple click counter block",
+	"supports": {
+		"html": false,
+		"color": {
+			"__experimentalSkipSerialization": true,
+			"gradients": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		}
+	},
+	"attributes": {
+		"content": {
+			"type": "array",
+			"source": "children",
+			"selector": "p"
+		},
+		"counterKey": {
+			"type": "string"
+		}
+	},
+	"styles": [
+		{ "name": "plain", "label": "Plain", "isDefault": true },
+		{ "name": "button", "label": "Button" },
+		{ "name": "outline", "label": "Outline Button" }
+	],	
+	"textdomain": "bf-click-counter",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./style-index.css",
+	"style": "file:./style-index.css"
+}

@@ -25,15 +25,10 @@
   *
   * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
   */
- registerBlockType( 'bf-favorite-patterns/marquee', {
+ registerBlockType( 'bf-click-counter/click-counter', {
      /**
       * @see ./edit.js
       */
-     edit: Edit,
- 
-     /**
-      * @see ./save.js
-      */
-     save,
+     edit: Edit
  } );
  

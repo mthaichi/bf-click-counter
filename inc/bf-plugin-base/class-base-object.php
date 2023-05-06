@@ -2,5 +2,8 @@
 
 namespace BF_PluginBase;
 
-Class BaseObject { }
+/**
+ * BaseObject
+ */
+class BaseObject { }
 

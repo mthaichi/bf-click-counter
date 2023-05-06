@@ -4,9 +4,7 @@ const path = require('path');
 let entries = {}; // ビルドするファイル群
 const srcDir = './src';
 const entryDir = [
-  'header-toolbar',
-  'marquee',
-  'sample'
+  'click-counter'
 ];
 entryDir.forEach((key) => {
   entries[key + '/index'] = path.resolve(srcDir, key);
