@@ -9,6 +9,7 @@
                 url: bf_ajaxurl,
                 data: {
                     'id' : jQuery(this).attr('data-id'),
+                    'ip_count_prevention' : jQuery(this).attr('data-ip-count-prevention'),
                     'action' : '<?php echo $action; ?>',
                 },
                 success: function( response ){

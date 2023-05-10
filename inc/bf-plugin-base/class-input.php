@@ -26,8 +26,8 @@ class Input extends BaseObject {
 	 * Constructor
 	 */
 	function __construct() {
-		$this->get = $_GET;
-		$this->post = $_POST;
+		$this->get     = $_GET;
+		$this->post    = $_POST;
 		$this->request = $_REQUEST;
 	}
 

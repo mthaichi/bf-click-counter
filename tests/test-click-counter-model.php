@@ -30,7 +30,7 @@ class ClickCounterModelTest extends WP_UnitTestCase {
         $this->assertEquals(  $this->click_counter_model->get_count('test2'), 1 );
         $this->click_counter_model->countup( 'test2', '127.0.0.2' );
         $this->assertEquals(  $this->click_counter_model->get_count('test2'), 2 );
-        $this->click_counter_model->delete( 'test' );
+        $this->click_counter_model->delete_by_counter_key( 'test' );
         $this->assertEquals(  $this->click_counter_model->get_count('test'), null);
 
         $this->click_counter_model->update( array('count' => 11), array('counter_key' => 'test2'));

@@ -11,28 +11,66 @@
 		"html": false,
 		"color": {
 			"__experimentalSkipSerialization": true,
-			"gradients": true,
+			"gradients": false,
 			"__experimentalDefaultControls": {
 				"background": true,
 				"text": true
 			}
-		}
+		},
+		"typography": {
+			"fontSize": true
+		},
+		"spacing": {
+			"margin": true
+		}		
 	},
 	"attributes": {
-		"content": {
-			"type": "array",
-			"source": "children",
-			"selector": "p"
-		},
 		"counterKey": {
 			"type": "string"
-		}
+		},
+		"counterLabel": {
+			"type": "string",
+			"default": "Like! (%count%)"
+		},
+		"paddingValues": {
+			"type": "object",
+			"default": {
+				"top": "10px",
+				"left": "10px",
+				"bottom": "10px",
+				"right": "10px"
+			}
+		},
+		"borderRadius": {
+			"type": "number",
+			"default": 4
+		},
+		"buttonAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"borderWidth": {
+			"type": "number",
+			"default": 1		
+		},
+		"borderColor": {
+			"type": "string",
+			"default": "#008"
+		},
+		"ipCountPrevention": {
+			"type": "boolean",
+			"default": true
+		},		
+		"style": {
+			"type": "object",
+			"default": {
+				"color": {
+					"background": "#fff",
+					"text": "#008"
+				}
+			}
+		}		
 	},
-	"styles": [
-		{ "name": "plain", "label": "Plain", "isDefault": true },
-		{ "name": "button", "label": "Button" },
-		{ "name": "outline", "label": "Outline Button" }
-	],	
 	"textdomain": "bf-click-counter",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./style-index.css",

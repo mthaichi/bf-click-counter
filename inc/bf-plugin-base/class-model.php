@@ -49,37 +49,59 @@ class Model {
 		$wpdb->query( $sql );
 	}
 
+	/**
+	 * Get data
+	 *
+	 * @param array  $conditions
+	 * @param [type] $output_type
+	 * @return void
+	 */
 	public function get( $conditions = array(), $output_type = ARRAY_A ) {
 		global $wpdb;
-		$table_name = $this->get_table_name();
+		$table_name   = $this->get_table_name();
 		$where_clause = $this->generate_where_clause( $conditions );
-		
 
 		$query = null;
 		if ( $where_clause ) {
-			$query      = $wpdb->prepare( "SELECT * FROM $table_name WHERE $where_clause", array_values($conditions) );
+			$query = $wpdb->prepare( "SELECT * FROM $table_name WHERE $where_clause", array_values( $conditions ) );
 		} else {
-			$query      = $wpdb->prepare( "SELECT * FROM $table_name WHERE" );
+			$query = $wpdb->prepare( "SELECT * FROM $table_name WHERE" );
 		}
-  
-		$results    = $wpdb->get_results( $query, $output_type );	
-		
+
+		$results = $wpdb->get_results( $query, $output_type );
+
 		return $results;
 	}
 
+	/**
+	 * Update data
+	 *
+	 * @param array $data The updated content.
+	 * @param array $conditions The update condition.
+	 * @return int The number of updated rows.
+	 */
 	public function update( $data, $conditions ) {
 		global $wpdb;
 		$table_name = $this->get_table_name();
-		return $wpdb->update( $table_name, $data, $conditions,
+		return $wpdb->update(
+			$table_name,
+			$data,
+			$conditions,
 			$this->generate_placeholder_array( $data ),
 			$this->generate_placeholder_array( $conditions )
 		);
 	}
 
-	function generate_placeholder_array($data) {
+	/**
+	 * Generate an array of placeholders for wpdb::update.
+	 *
+	 * @param array $data
+	 * @return array
+	 */
+	function generate_placeholder_array( $data ) {
 		$placeholders = array();
-		foreach ($data as $value) {
-			if (is_numeric($value)) {
+		foreach ( $data as $value ) {
+			if ( is_numeric( $value ) ) {
 				$placeholders[] = '%d';
 			} else {
 				$placeholders[] = '%s';
@@ -88,27 +110,33 @@ class Model {
 		return $placeholders;
 	}
 
-public function generate_where_clause ( $conditions ) {
-	$where_clause = "";
-	foreach ((array)$conditions as $key => $value) {
-		if (is_numeric($value)) { 
-			$where_clause .= "$key = %d AND ";
-		} else {
-			$where_clause .= "$key = %s AND ";
+	/**
+	 * Generate a "where" clause.
+	 *
+	 * @param array $conditions Specify search conditions with an array.
+	 * @return string The generated "where" clause.
+	 */
+	public function generate_where_clause( $conditions ) {
+		$where_clause = '';
+		foreach ( (array) $conditions as $key => $value ) {
+			if ( is_numeric( $value ) ) {
+				$where_clause .= "$key = %d AND ";
+			} else {
+				$where_clause .= "$key = %s AND ";
+			}
 		}
+		return rtrim( $where_clause, ' AND ' );
 	}
-	return rtrim($where_clause, " AND ");
-}
 
 
 	/**
-	 * Get all counter data
+	 * Get all data
 	 *
 	 * @param string $counter_key counter key name
 	 * @return array| null The data array if found, null if not found.
 	 */
 
-	 public function get_all( $output_type = ARRAY_A ) {
+	public function get_all( $output_type = ARRAY_A ) {
 		global $wpdb;
 		$table_name = $this->get_table_name();
 		$query      = $wpdb->prepare( "SELECT * FROM $table_name" );
@@ -120,8 +148,8 @@ public function generate_where_clause ( $conditions ) {
 
 		return $results;
 	}
-	
-	public function get_one($conditions = array(), $output_type = ARRAY_A ) {
+
+	public function get_one( $conditions = array(), $output_type = ARRAY_A ) {
 		$result = $this->get( $conditions, $output_type );
 		return $result ? $result[0] : null;
 	}
@@ -134,6 +162,17 @@ public function generate_where_clause ( $conditions ) {
 	public function get_table_name() {
 		global $wpdb;
 		return $wpdb->prefix . $this->table_name;
+	}
+
+	/**
+	 * delete data
+	 *
+	 * @param [type] $conditions
+	 * @return void
+	 */
+	public function delete( $conditions ) {
+		global $wpdb;
+		$wpdb->delete( $this->get_table_name(), $conditions );
 	}
 
 }

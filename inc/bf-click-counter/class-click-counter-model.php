@@ -55,7 +55,7 @@ class ClickCounterModel extends \BF_PluginBase\Model {
 	 * @return array| null The data array if found, null if not found.
 	 */
 
-	public function get_counter_data ( $counter_key, $output_type = ARRAY_A ) {
+	public function get_counter_data( $counter_key, $output_type = ARRAY_A ) {
 		global $wpdb;
 		$table_name = $this->get_table_name();
 		$query      = $wpdb->prepare( "SELECT * FROM $table_name WHERE counter_key = %s", $counter_key );
@@ -95,11 +95,11 @@ class ClickCounterModel extends \BF_PluginBase\Model {
 	 * @return int The count value after incrementing
 	 */
 
-	public function countup( $counter_key, $ip_addr = null ) {
+	public function countup( $counter_key, $ip_addr = null, $ip_count_prevention = false ) {
 		global $wpdb;
 		$counter = $this->get_one( array( 'counter_key' => $counter_key ) );
 
-		if ( ! is_null( $ip_addr ) && isset( $counter['ip_addr'] ) && $counter['ip_addr'] === $ip_addr ) {
+		if ( $ip_count_prevention && ! is_null( $ip_addr ) && isset( $counter['ip_addr'] ) && $counter['ip_addr'] === $ip_addr ) {
 			return $counter['count'];
 		}
 
@@ -139,8 +139,8 @@ class ClickCounterModel extends \BF_PluginBase\Model {
 	 * @return void
 	 */
 
-	public function delete( $counter_key ) {
+	public function delete_by_counter_key( $counter_key ) {
 		global $wpdb;
-		$wpdb->delete( $this->get_table_name(), array( 'counter_key' => $counter_key ) );
+		$this->delete( array( 'counter_key' => $counter_key ) );
 	}
 }

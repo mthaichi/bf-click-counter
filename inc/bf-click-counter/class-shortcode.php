@@ -1,5 +1,6 @@
 <?php
 namespace BF_ClickCounter;
+
 /**
  * Shortcode class
  */
@@ -22,9 +23,11 @@ class Shortcode extends \BF_PluginBase\BaseObject {
 	private $view_file = 'button.php';
 
 	private $args = array(
-		'id' => '/^[\w\-_]+$/',
-		'ip' => '/^\d+$/',
-		'classnames' => '/^[0-9A-Za-z\-_\s]+$/'
+		'id'         => '/^[\w\-_]+$/',
+		'ip'         => '/^\d+$/',
+		'classnames' => '/^[0-9A-Za-z\-_\s]+$/',
+		'label'      => '/^.+$/',
+		'ip-count-prevention' => '/^[0-1]$/'
 	);
 
 	/**
@@ -45,19 +48,24 @@ class Shortcode extends \BF_PluginBase\BaseObject {
 		return $this->shortcode_tag;
 	}
 
-
+	/**
+	 * Building short code tags from an array
+	 *
+	 * @param array $args
+	 * @return void
+	 */
 	public function build( $args = array() ) {
 		$retargs = array();
 		foreach ( $args as $id => $val ) {
 			if ( array_key_exists( $id, $this->args ) ) {
-				if ( preg_match( $this->args[$id], $val ) ) {
-					$retargs[$id] = $val;
+				if ( preg_match( $this->args[ $id ], $val ) ) {
+					$retargs[ $id ] = $val;
 				}
 			}
 		}
 		$shortcode = '[' . $this->get_tagname();
-		foreach($retargs as $key => $value) {
-		  $shortcode .= ' ' . $key . '="' . $value . '"';
+		foreach ( $retargs as $key => $value ) {
+			$shortcode .= ' ' . $key . '="' . $value . '"';
 		}
 		$shortcode .= ']';
 		return $shortcode;
@@ -76,14 +84,16 @@ class Shortcode extends \BF_PluginBase\BaseObject {
 		$textdomain = $plugin->get_textdomain();
 		$atts       = shortcode_atts(
 			array(
-				'id' => '0',
-				'classnames' => ''
+				'id'         => '0',
+				'classnames' => '',
+				'label'      => 'Like!',
+				'ip-count-prevention' => 1
 			),
 			$atts,
 			'bfcc'
 		);
 
-		$classnames = explode(' ', $atts['classnames']);
+		$classnames   = explode( ' ', $atts['classnames'] );
 		$classnames[] = 'bf-click-counter';
 
 		$model = ClickCounterModel::get_instance();
@@ -93,9 +103,10 @@ class Shortcode extends \BF_PluginBase\BaseObject {
 				$this->view_file,
 				array(
 					'id'           => $atts['id'],
-					'button_label' => __( 'Like!', $textdomain ),
+					'button_label' => __( $atts['label'], $textdomain ),
 					'count'        => $model->get_count( $atts['id'] ),
-					'classnames'        => Utils::classnames( $classnames )
+					'classnames'   => Utils::classnames( $classnames ),
+					'ip_count_prevention' => $atts['ip-count-prevention']
 				),
 				false
 			);
@@ -107,7 +118,7 @@ class Shortcode extends \BF_PluginBase\BaseObject {
 				'id'           => $atts['id'],
 				'button_label' => __( 'Like!', $textdomain ),
 				'count'        => 0,
-				'classnames'   => Utils::classnames( $classnames )
+				'classnames'   => Utils::classnames( $classnames ),
 			),
 			false
 		);

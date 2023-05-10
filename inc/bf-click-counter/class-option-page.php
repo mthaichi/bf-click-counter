@@ -1,5 +1,7 @@
 <?php
+
 namespace BF_ClickCounter;
+
 /**
  * Option page class
  */
@@ -10,21 +12,21 @@ class OptionPage extends \BF_PluginBase\OptionPage {
 	 *
 	 * @var string
 	 */
-	protected $page_title         = 'BF GA4 Tag Installer';
+	protected $page_title = 'BF GA4 Tag Installer';
 
 	/**
 	 * Menu title
 	 *
 	 * @var string
 	 */
-	protected $menu_title         = 'BF GA4 Tag Installer';
+	protected $menu_title = 'BF GA4 Tag Installer';
 
 	/**
 	 * Slug
 	 *
 	 * @var string
 	 */
-	protected $slug               = 'bf-ga4-tag-installer';
+	protected $slug = 'bf-ga4-tag-installer';
 
 	/**
 	 * Setting group name

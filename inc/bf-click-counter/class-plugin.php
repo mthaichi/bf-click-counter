@@ -1,5 +1,8 @@
 <?php
 namespace BF_ClickCounter;
+
+require_once 'functions.php';
+
 /**
  * Plugin main class
  */
@@ -55,23 +58,15 @@ class Plugin extends \BF_PluginBase\Plugin {
 		$this->countup_controller = CountupAjaxController::get_instance();
 		$this->countup_controller->activate( 'bfcc-countup' );
 
-		$this->click_counter_block = new ClickCounterBlock($this, $block_dir . '/click-counter');
-        $this->click_counter_block->initialize();
+		$this->click_counter_block = new ClickCounterBlock( $this, $block_dir . '/click-counter' );
+		$this->click_counter_block->initialize();
 
 		$this->main_page = new MainPage( $this );
 		$this->main_page->initialize();
-
-		$this->test_page = new TestPage( $this );
-		$this->main_page->add_subpage($this->test_page);
-
-	
 
 		$this->option_page = new OptionPage( $this );
 		$this->option_page->initialize();
 
 	}
-
-
-
 }
 

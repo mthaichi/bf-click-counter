@@ -1,12 +1,12 @@
-<h2>カウント数を編集</h2>
+<h2><?php _e('Edit Count Number', BFCC_TEXTDOMAIN); ?></h2>
 <form method="post">
   <input type="hidden" name="action" value="update_count" />
-  <input type="hidden" name="id" value="<?php echo $data['id']; ?>" />
+  <input type="hidden" name="id" value="<?php echo esc_attr($data['id']); ?>" />
   <table class="form-table">
     <tr>
-      <th>カウント数</th>
+      <th><?php _e('Count Number', BFCC_TEXTDOMAIN); ?></th>
       <td>
-      <input type="number" name="count" value="<?php echo $data['count']; ?>" />
+      <input type="number" name="count" value="<?php echo esc_attr( $data['count'] ); ?>" />
       </td>
     </tr>
   </table>

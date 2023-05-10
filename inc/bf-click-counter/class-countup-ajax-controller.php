@@ -14,7 +14,7 @@ class CountupAjaxController extends \BF_PluginBase\AjaxController {
 	function action() {
 		$input         = new \BF_PluginBase\Input();
 		$counter_model = ClickCounterModel::get_instance();
-		echo $counter_model->countup( $input->post( 'id' ), $_SERVER['REMOTE_ADDR'] );
+		echo $counter_model->countup( $input->post( 'id' ), $_SERVER['REMOTE_ADDR'], $input->post( 'ip_count_prevention' ), );
 		die();
 	}
 

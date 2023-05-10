@@ -1,0 +1,81 @@
+# Copyright (C) 2023 BREADFISH
+# This file is distributed under the same license as the BF Click Counter plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: BF Click Counter 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bf-click-counter\n"
+"POT-Creation-Date: 2023-05-06T16:11:49+00:00\n"
+"PO-Revision-Date: 2023-05-07 09:01+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Plugin Name of the plugin
+msgid "BF Click Counter"
+msgstr "BF Click Counter"
+
+#. Description of the plugin
+msgid "This is a simple click counter plugin."
+msgstr "単にクリックされた回数を表示するだけのいいねボタンを簡単に作成できます。"
+
+#. Author of the plugin
+msgid "BREADFISH"
+msgstr "BREADFISH"
+
+#: inc/bf-click-counter/class-click-counter-block.php:18
+msgid "Please specify the \"Counter Key\" of the counter."
+msgstr "「カウンターキー」を設定してください。"
+
+#: inc/bf-click-counter/class-click-counter-list-table.php:15
+msgid "Counter key"
+msgstr "カウンターキー"
+
+#: inc/bf-click-counter/class-click-counter-list-table.php:16
+#: views/update-count.php:7
+msgid "Count Number"
+msgstr "カウント数"
+
+#: inc/bf-click-counter/class-click-counter-list-table.php:46
+msgid "Edit"
+msgstr "編集"
+
+#: inc/bf-click-counter/class-click-counter-list-table.php:47
+msgid "Delele"
+msgstr "削除"
+
+#: inc/bf-click-counter/class-main-page.php:64
+msgid "The counter has been successfully updated."
+msgstr "編集は正常に完了しました。"
+
+#: inc/bf-click-counter/class-main-page.php:81
+msgid "The counter has been successfully deleted."
+msgstr "削除は正常に完了しました。"
+
+#: inc/bf-click-counter/class-shortcode.php:110
+msgid "Like!"
+msgstr "いいね！"
+
+#: views/main-page.php:4
+msgid "Are you sure you want to delete the counter?"
+msgstr "本当に削除してもよろしいですか？"
+
+#: views/update-count.php:1
+msgid "Edit Count Number"
+msgstr "カウント数の編集"
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:21
+msgid "Counter setting"
+msgstr "カウンター設定"
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:23
+msgid "Counter Key"
+msgstr "カウンターキー"
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:32
+msgid "Label"
+msgstr "ラベル"

@@ -7,11 +7,12 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build",
+		"translate": "wp i18n make-pot ./ languages/bf-click-counter.pot --ignore-domain && po2json ./languages/bf-click-counter-ja.po ./languages/bf-click-counter-ja-bf-click-counter-script.json -f jed1.x",
 		"format": "wp-scripts format",
 		"dist": "npm run build && npx gulp dist",
 		"devinit": "gulp devinit",
 		"lint:css": "wp-scripts lint-style",
-		"lint:js": "wp-scripts lint-js",
+		"lint:js": "wp-scripts format src/ && wp-scripts lint-js src/ --fix",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start",
@@ -24,6 +25,7 @@
 		"gulp": "^4.0.2",
 		"gulp-clean": "^0.4.0",
 		"gulp-rename": "^2.0.0",
-		"gulp-replace": "^1.1.4"
+		"gulp-replace": "^1.1.4",
+		"po2json": "^0.4.5"
 	}
 }

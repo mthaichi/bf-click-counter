@@ -1,0 +1,1 @@
+// Dummy JS code for enqueuing translated JSON.
