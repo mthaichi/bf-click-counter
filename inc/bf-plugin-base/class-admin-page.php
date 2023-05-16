@@ -97,7 +97,6 @@ class AdminPage extends BaseObject {
 		$this->vars[ $key ] = $value;
 	}
 
-
 	public function action() {
 		$input       = $this->plugin->input;
 		$action      = $input->request( 'action' );
