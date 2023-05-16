@@ -21,8 +21,6 @@ require_once 'autoload.php';
 
 define( "BFCC_TEXTDOMAIN" , "bf-click-counter" );
 
-
-
 $plugin = BF_ClickCounter\Plugin::get_instance();
 $plugin->initialize( __DIR__ );
 

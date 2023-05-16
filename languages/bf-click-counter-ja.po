@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BF Click Counter 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bf-click-counter\n"
-"POT-Creation-Date: 2023-05-06T16:11:49+00:00\n"
-"PO-Revision-Date: 2023-05-07 09:01+0900\n"
+"POT-Creation-Date: 2023-05-12T10:40:15+00:00\n"
+"PO-Revision-Date: 2023-05-12 19:40+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -27,36 +27,40 @@ msgstr "単にクリックされた回数を表示するだけのいいねボタ
 msgid "BREADFISH"
 msgstr "BREADFISH"
 
-#: inc/bf-click-counter/class-click-counter-block.php:18
+#: bf-click-counter.php:24
+msgid "Content X"
+msgstr "コンテントエックス"
+
+#: inc/bf-click-counter/class-click-counter-block.php:20
 msgid "Please specify the \"Counter Key\" of the counter."
 msgstr "「カウンターキー」を設定してください。"
 
-#: inc/bf-click-counter/class-click-counter-list-table.php:15
+#: inc/bf-click-counter/class-click-counter-list-table.php:16
 msgid "Counter key"
 msgstr "カウンターキー"
 
-#: inc/bf-click-counter/class-click-counter-list-table.php:16
+#: inc/bf-click-counter/class-click-counter-list-table.php:17
 #: views/update-count.php:7
 msgid "Count Number"
 msgstr "カウント数"
 
-#: inc/bf-click-counter/class-click-counter-list-table.php:46
+#: inc/bf-click-counter/class-click-counter-list-table.php:47
 msgid "Edit"
 msgstr "編集"
 
-#: inc/bf-click-counter/class-click-counter-list-table.php:47
+#: inc/bf-click-counter/class-click-counter-list-table.php:48
 msgid "Delele"
 msgstr "削除"
 
-#: inc/bf-click-counter/class-main-page.php:64
+#: inc/bf-click-counter/class-main-page.php:70
 msgid "The counter has been successfully updated."
 msgstr "編集は正常に完了しました。"
 
-#: inc/bf-click-counter/class-main-page.php:81
+#: inc/bf-click-counter/class-main-page.php:95
 msgid "The counter has been successfully deleted."
 msgstr "削除は正常に完了しました。"
 
-#: inc/bf-click-counter/class-shortcode.php:110
+#: inc/bf-click-counter/class-shortcode.php:119
 msgid "Like!"
 msgstr "いいね！"
 
@@ -68,14 +72,40 @@ msgstr "本当に削除してもよろしいですか？"
 msgid "Edit Count Number"
 msgstr "カウント数の編集"
 
-#: build/click-counter/index.js:1 src/click-counter/edit.js:21
+#: build/click-counter/index.js:1 src/click-counter/edit.js:79
 msgid "Counter setting"
 msgstr "カウンター設定"
 
-#: build/click-counter/index.js:1 src/click-counter/edit.js:23
+#: build/click-counter/index.js:1 src/click-counter/edit.js:82
 msgid "Counter Key"
 msgstr "カウンターキー"
 
-#: build/click-counter/index.js:1 src/click-counter/edit.js:32
+#: build/click-counter/index.js:1 src/click-counter/edit.js:91
 msgid "Label"
 msgstr "ラベル"
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:100
+msgid "IP-based consecutive click count prevention"
+msgstr ""
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:107
+msgid "Padding"
+msgstr ""
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:119
+#, fuzzy
+#| msgid "Counter setting"
+msgid "Border setting"
+msgstr "カウンター設定"
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:121
+msgid "Border Width"
+msgstr ""
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:136
+msgid "Border radius"
+msgstr ""
+
+#: build/click-counter/index.js:1 src/click-counter/edit.js:151
+msgid "Border Color"
+msgstr ""

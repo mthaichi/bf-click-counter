@@ -13,6 +13,7 @@ class ClickCounterBlock extends \BF_PluginBase\Block {
 	 * @return string Rendering contents.
 	 */
 	public function render( $attributes ) {
+		$attributes = Utils::sanitize_multi_dimensional_array( $attributes );
 		$shortcode = Shortcode::get_instance();
 		$id        = isset( $attributes['counterKey'] ) ? $attributes['counterKey'] : null;
 		if ( empty( $id ) ) {

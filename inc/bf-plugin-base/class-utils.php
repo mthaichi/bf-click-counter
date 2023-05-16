@@ -22,4 +22,17 @@ class Utils extends BaseObject {
 		}
 		return $css;
 	}
+
+	static function sanitize_multi_dimensional_array( $array ) {
+		foreach ( $array as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$array[ $key ] = self::sanitize_multi_dimensional_array( $value );
+			} else {
+				$array[ $key ] = sanitize_text_field( $value );
+			}
+		}
+		return $array;
+	}
+	
+
 }

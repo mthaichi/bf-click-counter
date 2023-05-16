@@ -19,6 +19,8 @@ import './style.scss';
  */
 import Edit from './edit';
 
+import { ReactComponent as Icon } from './icon.svg';
+
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -29,4 +31,5 @@ registerBlockType( 'bf-click-counter/click-counter', {
 	 * @see ./edit.js
 	 */
 	edit: Edit,
+	icon: <Icon />
 } );

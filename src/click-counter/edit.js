@@ -15,6 +15,7 @@ import {
 	__experimentalBoxControl as BoxControl, // eslint-disable-line @wordpress/no-unsafe-wp-apis
 } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+
 export default function Edit( props ) {
 	const blockProps = useBlockProps();
 	const { attributes, setAttributes } = props;
@@ -52,11 +53,16 @@ export default function Edit( props ) {
 		},
 	];
 
+	
 	const resetPaddingValues = {
 		top: '0px',
 		left: '0px',
 		right: '0px',
 		bottom: '0px',
+	};
+
+	const stripHTML = (html) => {
+		return html.replace(/(<([^>]+)>)/gi, '');
 	};
 
 	return (
@@ -78,7 +84,7 @@ export default function Edit( props ) {
 						value={ counterKey }
 						className={ `mt-0 mb-3` }
 						onChange={ ( value ) =>
-							setAttributes( { counterKey: value } )
+							setAttributes( { counterKey: stripHTML(value) } )
 						}
 						placeholder={ 'Counter Key' }
 					/>
@@ -87,7 +93,7 @@ export default function Edit( props ) {
 						value={ counterLabel }
 						className={ `mt-0 mb-3` }
 						onChange={ ( value ) =>
-							setAttributes( { counterLabel: value } )
+							setAttributes( { counterLabel: stripHTML(value) } )
 						}
 						placeholder={ 'Counter Key' }
 					/>
