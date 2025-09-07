@@ -45,7 +45,7 @@ class Plugin extends \BF_PluginBase\Plugin {
 	public function initialize( $base_dir ) {
 
 		parent::initialize( $base_dir );
-		$block_dir = $this->base_dir . '/build';
+		$block_dir = $this->base_dir . '/src';
 
 		$this->view  = new \BF_PluginBase\View( $this );
 		$this->input = new \BF_PluginBase\Input();

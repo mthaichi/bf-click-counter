@@ -27,7 +27,6 @@ $plugin->initialize( __DIR__ );
 $counter_model = BF_ClickCounter\ClickCounterModel::get_instance();
 register_activation_hook( __FILE__, array( $counter_model, 'activate' ) );
 
-wp_enqueue_script( 'bf-click-counter-script', plugin_dir_url( __FILE__ ) . 'index.js');
 load_plugin_textdomain( BFCC_TEXTDOMAIN , false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 function bf_click_counter_script_translations() {

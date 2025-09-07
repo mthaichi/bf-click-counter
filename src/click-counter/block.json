@@ -17,7 +17,8 @@
 			}
 		},
 		"typography": {
-			"fontSize": true
+			"fontSize": true,
+			"__experimentalTextDecoration": true
 		},
 		"spacing": {
 			"margin": true
@@ -71,7 +72,7 @@
 		}		
 	},
 	"textdomain": "bf-click-counter",
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./style-index.css",
-	"style": "file:./style-index.css"
+	"editorScript": "file:../../build/click-counter/index.js",
+	"editorStyle": "file:../../build/style-click-counter/index.css",
+	"style": "file:../../build/style-click-counter/index.css"
 }

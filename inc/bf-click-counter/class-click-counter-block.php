@@ -37,6 +37,11 @@ class ClickCounterBlock extends \BF_PluginBase\Block {
 					$styles['background-color'] = $attributes['style']['color']['background'];
 				}
 			}
+			if ( array_key_exists( 'typography', $attributes['style'] ) ) {
+				if ( array_key_exists( 'textDecoration', $attributes['style']['typography'] ) ) {
+					$styles['text-decoration'] = $attributes['style']['typography']['textDecoration'];
+				}
+			}
 		}
 
 		if ( array_key_exists( 'borderColor', $attributes ) ) {
@@ -97,7 +102,13 @@ class ClickCounterBlock extends \BF_PluginBase\Block {
 		if ( ! is_null( $model->get_counter_data( $id ) ) ) {
 			$count = $model->get_count( $id );
 		}
-		return $this->plugin->view->render(
+		
+		// jQuery とAJAX JavaScript を出力
+		wp_enqueue_script( 'jquery' );
+		$countup_controller = CountupAjaxController::get_instance();
+		$ajax_script = $this->plugin->view->render( 'counter_ajax.php', array( 'action' => 'bfcc-countup' ), false );
+		
+		$counter_html = $this->plugin->view->render(
 			'counter.php',
 			array(
 				'wrapper_attributes' => $wrapper_attributes,
@@ -111,5 +122,7 @@ class ClickCounterBlock extends \BF_PluginBase\Block {
 			),
 			false
 		);
+		
+		return $counter_html . $ajax_script;
 	}
 }

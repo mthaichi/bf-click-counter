@@ -38,6 +38,7 @@
   display: inline-block;
   text-align: center;
   vertical-align: middle;
+  text-decoration: none; // デフォルトのアンダーラインを無効化
   &.is-style-button {
     padding: 10px;
     cursor: pointer;
@@ -54,5 +55,9 @@
   }
   &:hover {
     opacity: 0.8;
+    text-decoration: none; // ホバー時もアンダーラインなし
+  }
+  &:focus, &:visited, &:active {
+    text-decoration: none; // 各状態でもアンダーラインなし
   }
 }

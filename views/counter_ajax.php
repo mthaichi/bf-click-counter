@@ -1,24 +1,33 @@
 <script>
     var bf_ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
 
-    jQuery(function() {
-        jQuery('.bf-click-counter').click(function() {
-            var self = this;
-            jQuery.ajax({
-                type: 'POST',
-                url: bf_ajaxurl,
-                data: {
-                    'id' : jQuery(this).attr('data-id'),
-                    'ip_count_prevention' : jQuery(this).attr('data-ip-count-prevention'),
-                    'action' : '<?php echo $action; ?>',
-                },
-                success: function( response ){
-                    jQuery(self).find('.count').html(response);   
-                }
-            });				
-
-            return false;
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.bf-click-counter').forEach(function(element) {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                var self = this;
+                var xhr = new XMLHttpRequest();
+                
+                var formData = new FormData();
+                formData.append('id', this.getAttribute('data-id'));
+                formData.append('ip_count_prevention', this.getAttribute('data-ip-count-prevention'));
+                formData.append('action', '<?php echo $action; ?>');
+                
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var countElement = self.querySelector('.count');
+                        if (countElement) {
+                            countElement.innerHTML = xhr.responseText;
+                        }
+                    }
+                };
+                
+                xhr.open('POST', bf_ajaxurl, true);
+                xhr.send(formData);
+                
+                return false;
+            });
         });
-    })
-
+    });
 </script>
