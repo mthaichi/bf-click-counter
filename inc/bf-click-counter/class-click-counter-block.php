@@ -14,7 +14,6 @@ class ClickCounterBlock extends \BF_PluginBase\Block {
 	 */
 	public function render( $attributes ) {
 		$attributes = Utils::sanitize_multi_dimensional_array( $attributes );
-		$shortcode = Shortcode::get_instance();
 		$id        = isset( $attributes['counterKey'] ) ? $attributes['counterKey'] : null;
 		if ( empty( $id ) ) {
 			return '<div style="border:1px solid #777700; background-color:#ffffe0; padding:10px">' . __( 'Please specify the "Counter Key" of the counter.' ) . '</div>';
@@ -103,12 +102,7 @@ class ClickCounterBlock extends \BF_PluginBase\Block {
 			$count = $model->get_count( $id );
 		}
 		
-		// jQuery とAJAX JavaScript を出力
-		wp_enqueue_script( 'jquery' );
-		$countup_controller = CountupAjaxController::get_instance();
-		$ajax_script = $this->plugin->view->render( 'counter_ajax.php', array( 'action' => 'bfcc-countup' ), false );
-		
-		$counter_html = $this->plugin->view->render(
+		return $this->plugin->view->render(
 			'counter.php',
 			array(
 				'wrapper_attributes' => $wrapper_attributes,
@@ -122,7 +116,5 @@ class ClickCounterBlock extends \BF_PluginBase\Block {
 			),
 			false
 		);
-		
-		return $counter_html . $ajax_script;
 	}
 }
